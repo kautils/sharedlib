@@ -23,7 +23,7 @@ set(${module_name}_common_pref
     #DEBUG_VERBOSE
     MODULE_PREFIX kautil
     MODULE_NAME ${module_name}
-    INCLUDES $<BUILD_INTERFACE:${__include_dir}> $<INSTALL_INTERFACE:include> 
+    INCLUDES ${CMAKE_CURRENT_LIST_DIR} $<BUILD_INTERFACE:${__include_dir}> $<INSTALL_INTERFACE:include> 
     SOURCES ${srcs}
     #LINK_LIBS 
     EXPORT_NAME_PREFIX ${PROJECT_NAME}

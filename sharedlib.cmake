@@ -1,5 +1,5 @@
 
-if(NOT DEFINED ${KAUTIL_THIRD_PARTY_DIR})
+if(NOT DEFINED KAUTIL_THIRD_PARTY_DIR)
     set(KAUTIL_THIRD_PARTY_DIR ${CMAKE_BINARY_DIR})
     file(MAKE_DIRECTORY "${KAUTIL_THIRD_PARTY_DIR}")
 endif()
@@ -16,14 +16,13 @@ endmacro()
 git_clone(https://raw.githubusercontent.com/kautils/CMakeLibrarytemplate/v0.0.1/CMakeLibrarytemplate.cmake)
 
 set(module_name sharedlib)
-get_filename_component(__include_dir "${CMAKE_CURRENT_LIST_DIR}" DIRECTORY)
 unset(srcs)
 file(GLOB srcs ${CMAKE_CURRENT_LIST_DIR}/*.cc)
 set(${module_name}_common_pref
     #DEBUG_VERBOSE
     MODULE_PREFIX kautil
     MODULE_NAME ${module_name}
-    INCLUDES ${CMAKE_CURRENT_LIST_DIR} $<BUILD_INTERFACE:${__include_dir}> $<INSTALL_INTERFACE:include> 
+    INCLUDES ${CMAKE_CURRENT_LIST_DIR} $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}> $<INSTALL_INTERFACE:include> 
     SOURCES ${srcs}
     #LINK_LIBS 
     EXPORT_NAME_PREFIX ${PROJECT_NAME}

@@ -1,9 +1,6 @@
-
-
 set(${PROJECT_NAME}_m_evacu ${m})
-set(m CMakePullLocalRepositoryAsSymLink)
+set(m ${PROJECT_NAME})
 list(APPEND ${m}_unsetter )
-
 
 if(NOT EXISTS ${CMAKE_BINARY_DIR}/CMakeKautilHeader.cmake)
     file(DOWNLOAD https://raw.githubusercontent.com/kautils/CMakeKautilHeader/v0.0.1/CMakeKautilHeader.cmake ${CMAKE_BINARY_DIR}/CMakeKautilHeader.cmake)

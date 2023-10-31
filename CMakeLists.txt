@@ -1,8 +1,15 @@
 cmake_minimum_required(VERSION 3.20)
-set(__version 0.0.1)
-project(KautilSharedlib.${__version}
-        LANGUAGES C CXX
-        VERSION ${__version}
-        )
-unset(__version)
+set(PROJECT_VERSION 0.0.1)
+if("${KAUTIL_PROJECT_RENAME}" STREQUAL "")
+    if("${KAUTIL_PROJECT_SUFFIX}" STREQUAL "")
+        set(KAUTIL_PROJECT_SUFFIX ${PROJECT_VERSION} CACHE string "use to add suffix to targets" FORCE) 
+    endif()
+    set(PROJECT_NAME KautilSharedlib.${KAUTIL_PROJECT_SUFFIX})
+else()
+    set(PROJECT_NAME ${KAUTIL_PROJECT_RENAME})
+    unset(KAUTIL_PROJECT_SUFFIX CACHE)
+endif()
+project(${PROJECT_NAME} LANGUAGES C CXX VERSION ${PROJECT_VERSION})
+
+
 include(${CMAKE_CURRENT_LIST_DIR}/sharedlib.cmake)
